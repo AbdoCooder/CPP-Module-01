@@ -6,29 +6,19 @@
 /*   By: abenajib <abenajib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 16:54:15 by abenajib          #+#    #+#             */
-/*   Updated: 2025/08/24 16:54:19 by abenajib         ###   ########.fr       */
+/*   Updated: 2025/08/24 17:23:51 by abenajib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-Zombie::Zombie() {
-	std::cout << "Zombie constructed" << std::endl;
+void Zombie::announce( void )
+{
+	std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
-Zombie::Zombie(const Zombie &other) {
-	std::cout << "Zombie copied" << std::endl;
-	*this = other;
-}
-
-Zombie &Zombie::operator=(const Zombie &other) {
-	std::cout << "Zombie assigned" << std::endl;
-	if (this != &other) {
-		// Copy fields here
-	}
-	return *this;
-}
+void Zombie::setName( std::string name ) { this->name = name; }
 
 Zombie::~Zombie() {
-	std::cout << "Zombie destroyed" << std::endl;
+	std::cout << "Zombie " << name << " destroyed" << std::endl;
 }

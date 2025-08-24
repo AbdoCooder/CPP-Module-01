@@ -6,7 +6,7 @@
 /*   By: abenajib <abenajib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 16:54:06 by abenajib          #+#    #+#             */
-/*   Updated: 2025/08/24 16:54:10 by abenajib         ###   ########.fr       */
+/*   Updated: 2025/08/24 17:22:23 by abenajib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,15 @@
 class Zombie
 {
   public:
-	Zombie();
-	Zombie(const Zombie &other);
-	Zombie &operator=(const Zombie &other);
+	void announce( void );
+	void setName( std::string name );
 	~Zombie();
 
   private:
-	// Add members here
+	std::string name;
 };
+
+Zombie*	newZombie(std::string name);
+void    randomChump(std::string name);
 
 #endif // ZOMBIE_HPP
