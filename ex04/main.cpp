@@ -1,20 +1,13 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: abenajib <abenajib@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/24 16:54:31 by abenajib          #+#    #+#             */
-/*   Updated: 2025/08/28 16:13:23 by abenajib         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+// Copyright 2025 Abdelkader Benajiba
 
 #define PARAMS_ERR "The program takes three parameters in \
 the following order: a filename and two strings, s1 and s2 \n"
+
 #define OPENING_ERR "Error: Can't open the file (check if the file exist and \
 have the r permission) \n"
+
 #define CREATING_ERR "Error: Can't create the file \n"
+
 #define EMPTY_S1_ERR "Error: s1 cannot be empty \n"
 
 #include <iostream>
@@ -22,9 +15,6 @@ have the r permission) \n"
 
 static std::string& replaceOccurrence(std::string& line, const std::string& s1, const std::string& s2)
 {
-	if (s1.empty())
-		return;
-
 	std::size_t pos = 0;
 	while ((pos = line.find(s1, pos)) != std::string::npos)
 	{
@@ -47,12 +37,12 @@ int main(int ac, char **av)
 		return (std::cerr << EMPTY_S1_ERR, 1);
 
 	std::fstream fileInput(av[1], std::ios::in);	// creating a stream to <filename> for reading
-	if (!fileInput.is_open())
+	if (fileInput.fail())
 		return (std::cerr << OPENING_ERR, -1);
 
 	std::string newFile = std::string(av[1]) + ".replace";
 	std::fstream fileOutput(newFile.c_str(), std::ios::out);	// creating a stream to <filename>.replace for writing
-	if (!fileOutput.is_open())
+	if (fileOutput.fail())
 		return (std::cerr << CREATING_ERR, -1);
 
 	std::string line;
